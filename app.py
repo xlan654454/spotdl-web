@@ -9,7 +9,7 @@ def index():
     if request.method == "POST":
         url = request.form.get("url")
         if url:
-            os.system(f"spotdl {url} -o {DOWNLOAD_FOLDER}")
+            os.system(f"spotdl download {url} --output {DOWNLOAD_FOLDER}")
             filename = os.listdir(DOWNLOAD_FOLDER)[0]
             return send_file(os.path.join(DOWNLOAD_FOLDER, filename), as_attachment=True)
     return render_template("index.html")
